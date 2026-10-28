@@ -1,0 +1,24 @@
+# vimd-rs：独立 Rust TUI 版 Markdown 阅读/编辑器。
+# 依赖尽量少，release 开启体积优化。
+[package]
+name = "vimd"
+version = "0.1.0"
+edition = "2024"
+description = "A lightweight terminal Markdown reader/editor with Vim-like modes"
+license = "MIT"
+readme = "README.md"
+keywords = ["markdown", "tui", "vim", "editor", "kitty"]
+categories = ["command-line-utilities", "text-editors"]
+repository = "https://github.com/AkiMinoziko/vimd"
+
+[dependencies]
+crossterm = "0.29"
+ratatui = "0.30.2"
+unicode-width = "0.2"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"

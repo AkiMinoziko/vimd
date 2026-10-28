@@ -1,0 +1,5 @@
+# 构建产物。
+/target/
+
+# 本地预编译二进制；发布版应走 GitHub Releases，而不是提交到仓库。
+/bin/vimd

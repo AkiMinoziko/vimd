@@ -1,0 +1,20 @@
+# vimd CI：构建、单元测试、格式检查。
+# 屏幕级 TUI 验收依赖 tmux，保留在本地 ./test/capture.sh 运行。
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Format
+        run: cargo fmt --check
+      - name: Test
+        run: cargo test --locked
+      - name: Build release
+        run: cargo build --release --locked
